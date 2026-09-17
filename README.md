@@ -43,7 +43,7 @@
 
 ### 1. Installation
 ```bash
-git clone https://github.com/<your-username>/hyperlocal-community-portal.git
+git clone https://github.com/pixelssudio/hyperlocal-community-portal.git
 cd hyperlocal-community-portal
 npm install
 ```

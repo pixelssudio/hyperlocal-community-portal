@@ -3,12 +3,12 @@ import { getAuth, GoogleAuthProvider, type Auth } from 'firebase/auth';
 import { getFirestore, type Firestore } from 'firebase/firestore';
 
 export const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || 'AIzaSyBkQh_FMA83fcvPY_LMOU4MQiRGOni9QgY',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || 'your_api_key_here',
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || 'rawatbhata-hyperlocal.firebaseapp.com',
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'rawatbhata-hyperlocal',
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'rawatbhata-hyperlocal.firebasestorage.app',
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '498033458650',
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || '1:498033458650:web:b2ad2c261f1bd940fad4e3',
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || 'your_firebase_app_id_here',
 };
 
 export const isFirebaseConfigured = Boolean(
