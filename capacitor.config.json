@@ -1,0 +1,9 @@
+{
+  "appId": "com.rawatbhata.hyperlocal",
+  "appName": "Rawatbhata DIRECT",
+  "webDir": "out",
+  "server": {
+    "url": "https://rawatbhata-hyperlocal.vercel.app",
+    "cleartext": true
+  }
+}

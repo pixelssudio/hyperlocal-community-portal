@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isSuperAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'pankajkalosiya6@gmail.com' ||
+        request.auth.token.admin == true ||
+        request.auth.uid == 'pankajkalosiya6@gmail.com'
+      );
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // 1. Users Collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(userId) || isSuperAdmin();
+      allow update: if isOwner(userId) || isSuperAdmin();
+      allow delete: if isSuperAdmin();
+    }
+
+    // 2. Drivers Collection
+    match /drivers/{driverId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(driverId) || isSuperAdmin();
+      allow update: if isOwner(driverId) || isSuperAdmin();
+      allow delete: if isSuperAdmin();
+    }
+
+    // 3. Orders Collection (Task Isolation & Role Access)
+    match /orders/{orderId} {
+      // Clients see their orders, drivers see open pool or assigned orders, admins see all
+      allow read: if isSuperAdmin() || (
+        isAuthenticated() && (
+          resource.data.clientId == request.auth.uid ||
+          resource.data.assignedTo == request.auth.uid ||
+          resource.data.driverId == request.auth.uid ||
+          (resource.data.status == 'pending' && resource.data.targetAudience == 'driver_pool')
+        )
+      );
+
+      // Authenticated clients can create orders where clientId matches their auth.uid
+      allow create: if isSuperAdmin() || (
+        isAuthenticated() &&
+        request.resource.data.clientId == request.auth.uid
+      );
+
+      // Client, assigned driver, or admin can update order status
+      allow update: if isSuperAdmin() || (
+        isAuthenticated() && (
+          resource.data.clientId == request.auth.uid ||
+          resource.data.assignedTo == request.auth.uid ||
+          resource.data.driverId == request.auth.uid ||
+          (resource.data.status == 'pending' && request.resource.data.status in ['assigned', 'accepted'])
+        )
+      );
+
+      // Only Super Admin can delete orders
+      allow delete: if isSuperAdmin();
+    }
+
+    // 4. System Notifications & Admin Broadcasts
+    match /system_notifications/{notifId} {
+      allow read: if isAuthenticated();
+      allow create: if isSuperAdmin() || (
+        isAuthenticated() && request.resource.data.senderId == request.auth.uid
+      );
+      allow update, delete: if isSuperAdmin();
+    }
+
+    // 5. Config & System Settings / Pricing (Public Read for Real-Time Client Rates)
+    match /config/{configId} {
+      allow read: if true;
+      allow write: if isSuperAdmin();
+    }
+  }
+}
+
