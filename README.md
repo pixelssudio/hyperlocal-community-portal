@@ -9,7 +9,15 @@
 
 > **A turnkey, production-ready Hyperlocal On-Demand Services, Local Business Directory, and Community Marketplace platform.** Built with Next.js 14, Tailwind CSS glassmorphism, Firebase Firestore, and Capacitor for seamless Web, PWA, and Native Android deployment.
 
+
+<div align="center">
+  <br/>
+  <img src="./assets/preview.png" width="100%" alt="Live UI Preview" style="border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);" />
+  <br/>
+</div>
+
 ---
+
 
 ## 🌟 Key Highlights & Architecture
 
