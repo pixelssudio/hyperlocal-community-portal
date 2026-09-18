@@ -7,6 +7,15 @@
 [![Firebase](https://img.shields.io/badge/Firebase-Firestore-FFA611?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
 [![Capacitor](https://img.shields.io/badge/Capacitor-Mobile_Hybrid-119EFF?style=for-the-badge&logo=capacitor)](https://capacitorjs.com/)
 
+<br/>
+
+[![Live Production Web App](https://img.shields.io/badge/🌐_Live_Platform-rawatbhata--hyperlocal.vercel.app-00C853?style=for-the-badge&logo=vercel&logoColor=white)](https://rawatbhata-hyperlocal.vercel.app)
+[![Telegram Support](https://img.shields.io/badge/💬_Telegram-@the__musafir-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/the_musafir)
+
+<br/>
+
+[⭐ Star This Repo](https://github.com/themusafirr/hyperlocal-community-portal) • [🌐 Live Web App](https://rawatbhata-hyperlocal.vercel.app) • [💬 Contact Developer](https://t.me/the_musafir)
+
 > **A turnkey, production-ready Hyperlocal On-Demand Services, Local Business Directory, and Community Marketplace platform.** Built with Next.js 14, Tailwind CSS glassmorphism, Firebase Firestore, and Capacitor for seamless Web, PWA, and Native Android deployment.
 
 
